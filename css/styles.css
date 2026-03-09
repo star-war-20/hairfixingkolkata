@@ -347,6 +347,10 @@ h3 {
     top: 44px;
 }
 
+.header.scrolled.has-banner {
+    top: 0;
+}
+
 .header-inner {
     display: flex;
     align-items: center;
@@ -708,14 +712,14 @@ h3 {
     display: flex;
     gap: 14px;
     margin-bottom: 36px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 .hero-btn-whatsapp,
 .hero-btn-call {
     flex: 1;
-    min-width: 160px;
-    padding: 16px 24px;
+    min-width: auto;
+    padding: 12px 14px;
     border-radius: var(--radius-md);
     font-size: 1rem;
     font-weight: 700;
@@ -1045,6 +1049,42 @@ h3 {
     font-size: 0.75rem;
     color: var(--text-secondary);
     display: block;
+}
+
+@media (max-width: 768px) {
+    .trust-bar .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        padding: 0 16px;
+    }
+
+    .trust-item {
+        padding: 12px 14px;
+        gap: 10px;
+        flex-direction: column;
+        text-align: center;
+        border-radius: var(--radius-lg);
+    }
+
+    .trust-item .trust-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .trust-bar .container {
+        grid-template-columns: 1fr;
+    }
+
+    .trust-item {
+        flex-direction: row;
+        text-align: left;
+        padding: 16px 20px;
+        border-radius: var(--radius-full);
+    }
 }
 
 /* ══════════════════════════════
@@ -3069,7 +3109,7 @@ h3 {
 /* Branches Responsive */
 @media (max-width: 900px) {
     .branches-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
         max-width: 500px;
         margin-left: auto;
         margin-right: auto;
@@ -3078,7 +3118,78 @@ h3 {
 
 @media (min-width: 601px) and (max-width: 900px) {
     .branches-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr) !important;
         max-width: 100%;
+    }
+}
+
+/* ── Floating Action Buttons ── */
+.floating-actions {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 1050;
+}
+
+.float-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff !important;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.float-btn svg {
+    width: 32px;
+    height: 32px;
+    fill: currentColor;
+    color: #fff;
+}
+
+.float-btn:hover {
+    transform: translateY(-4px) scale(1.05);
+}
+
+.float-whatsapp {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+.float-whatsapp:hover {
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+}
+
+.float-call {
+    background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+    box-shadow: 0 6px 20px rgba(212, 168, 83, 0.4);
+}
+
+.float-call:hover {
+    box-shadow: 0 8px 25px rgba(212, 168, 83, 0.6);
+}
+
+@media (max-width: 768px) {
+    .floating-actions {
+        bottom: 16px;
+        right: 16px;
+        gap: 12px;
+    }
+
+    .float-btn {
+        width: 50px;
+        height: 50px;
+    }
+
+    .float-btn svg {
+        width: 24px;
+        height: 24px;
     }
 }
