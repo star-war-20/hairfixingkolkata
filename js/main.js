@@ -367,6 +367,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ── Celebrity Banner Parallax Background ──
+    const celebritySection = document.querySelector('.celebrity-banner');
+    const celebrityBg = document.querySelector('.celebrity-bg-parallax');
+    if (celebritySection && celebrityBg) {
+        window.addEventListener('scroll', () => {
+            const rect = celebritySection.getBoundingClientRect();
+            if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+                const shiftY = (rect.top / window.innerHeight) * 60;
+                celebrityBg.style.transform = `translateY(${shiftY}px)`;
+            }
+        });
+    }
+
     // ── Stagger Reveal for Modern Cards ──
     const serviceGrid = document.querySelector('.modern-cards');
     if (serviceGrid) {
